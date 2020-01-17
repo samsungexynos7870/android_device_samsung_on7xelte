@@ -1,0 +1,15 @@
+[
+	{
+		"remote":"github",
+		"repository":"astrako/android_kernel_samsung_exynos7870",
+		"target_path":"kernel/samsung/exynos7870",
+		"revision":"orangefox"
+	}
+
+	{
+		"remote":"gitlab",
+		"repository":"OrangeFox/Vendor",
+		"target_path":"vendor/recovery",
+		"revision":"master"
+	}
+]
