@@ -1,33 +1,26 @@
-#
-# Copyright 2017 The Android Open Source Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+# SkyHawk Recovery Project for the Samsung Galaxy J7 Prime
 
-PRODUCT_RELEASE_NAME := on7xelte
+### How to build ###
 
-$(call inherit-product, build/target/product/embedded.mk)
+```bash
+# Create dirs
+$ mkdir shrp ; cd shrp
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+# Init repo
+$ repo init --depth=1 -u git://github.com/SKYHAWK-Recovery-Project/platform_manifest_twrp_omni.git -b android-9.0
 
-PRODUCT_PACKAGES += \
-	charger_res_images \
-	charger
+# Clone my local repo
+$ git clone https://github.com/samsungexynos7870/android_manifest_samsung_on7xelte.git -b skyhawk .repo/local_manifests
 
-PRODUCT_DEVICE := on7xelte
-PRODUCT_NAME := omni_on7xelte
-PRODUCT_MODEL := Samsung Galaxy J7 Prime
-PRODUCT_BRAND := samsung
-PRODUCT_MANUFACTURER := samsung
+# Sync
+$ repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j`nproc`
 
+# Build
+$ mv device/samsung/on7xelte/build_skyhawk.sh .
+$ . build_skyhawk.sh on7xelte
+```
+## Credits
+2019 @Astrako
+
+## Contact
+Telegram support group: https://t.me/joinchat/D1Jk_VbieGBXOWZt2y8O7A
