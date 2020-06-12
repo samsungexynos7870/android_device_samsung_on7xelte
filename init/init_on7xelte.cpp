@@ -65,33 +65,16 @@ void property_override_quad(const std::string& boot_prop, const std::string& pro
     property_override(vendor_prop, value);
 }
 
-void init_dsds() {
-    property_set("ro.multisim.set_audio_params", "true");
-    property_set("ro.multisim.simslotcount", "2");
-    property_set("persist.radio.multisim.config", "dsds");
-}
-
 void vendor_load_properties()
 {
     // Init a dummy BT MAC address, will be overwritten later
     property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
 
-    std::string bootloader = GetProperty("ro.bootloader","");
-
-    if (bootloader.find("G610F") == 0) {
-        /* SM-G610F */
-        property_override_quad("ro.bootimage.build.fingerprint", "ro.build.fingerprint", "ro.odm.build.fingerprint", "ro.vendor.build.fingerprint", "samsung/on7xeltexc/on7xelte:9.0.0/R16NW/G610FXXU6CSK6:user/release-keys");
-        property_override("ro.build.description", "on7xeltexc-user 9.0.0 R16NW G610FXXU6CSK6 test-keys");
-        property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-G610F");
-        property_override_quad("ro.product.device", "ro.product.odm.device", "ro.product.system.device", "ro.product.vendor.device", "on7xelte");
-        property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "on7xeltexc");
-
-        init_dsds();
-
-    }
-
-    std::string device = GetProperty("ro.product.device", "");
-    LOG(ERROR) << "Found bootloader id %s setting build properties for %s device\n" << bootloader.c_str() << device.c_str();
+    property_override_quad("ro.bootimage.build.fingerprint", "ro.build.fingerprint", "ro.odm.build.fingerprint", "ro.vendor.build.fingerprint", "samsung/x1sxxx/x1s:10/QP1A.190711.020/G981BXXU1ATCT:user/release-keys:");
+    property_override("ro.build.description", "x1sxxx-user 10 QP1A.190711.020 G981BXXU1ATCT release-keys:");
+    property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-G981B");
+    property_override_quad("ro.product.device", "ro.product.odm.device", "ro.product.system.device", "ro.product.vendor.device", "x1s");
+    property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "x1sxxx");
 }
 
 
