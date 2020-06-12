@@ -22,15 +22,18 @@ BOARD_USE_TFA_AMP := true
 TARGET_OTA_ASSERT_DEVICE := on7xelte,on7xeltexc,on7xeltexx,on7xeltelk
 
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+BOARD_CUSTOM_BT_CONFIG := $(DEVICE_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 
 # Kernel
 TARGET_KERNEL_CONFIG := exynos7870-on7xelte_defconfig
 
 # Init
-# TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_on7xelte
-# TARGET_RECOVERY_DEVICE_MODULES := libinit_on7xelte
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_on7xelte
+TARGET_RECOVERY_DEVICE_MODULES := libinit_on7xelte
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
