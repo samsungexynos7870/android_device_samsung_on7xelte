@@ -16,6 +16,10 @@
 
 DEVICE_PATH := device/samsung/on7xelte
 
+# Custom mixer_paths
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/audio/mixer_paths_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_0.xml
+
 # Bootanimation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
