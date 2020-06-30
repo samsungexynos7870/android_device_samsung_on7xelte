@@ -65,17 +65,70 @@ void property_override_quad(const std::string& boot_prop, const std::string& pro
     property_override(vendor_prop, value);
 }
 
+void init_dsds() {
+    property_set("ro.vendor.multisim.set_audio_params", "true");
+    property_set("ro.vendor.multisim.simslotcount", "2");
+    property_set("persist.radio.multisim.config", "dsds");
+}
+
 void vendor_load_properties()
 {
     // Init a dummy BT MAC address, will be overwritten later
     property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
 
-    property_override_quad("ro.bootimage.build.fingerprint", "ro.build.fingerprint", "ro.odm.build.fingerprint", "ro.vendor.build.fingerprint", "samsung/x1sxxx/x1s:10/QP1A.190711.020/G981BXXU1ATCT:user/release-keys:");
-    property_override("ro.build.description", "x1sxxx-user 10 QP1A.190711.020 G981BXXU1ATCT release-keys:");
-    property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-G981B");
-    property_override_quad("ro.product.device", "ro.product.odm.device", "ro.product.system.device", "ro.product.vendor.device", "x1s");
-    property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "x1sxxx");
+    std::string bootloader = GetProperty("ro.bootloader","");
+
+    if (bootloader.find("G610F") == 0) {
+    /* SM-G610F */
+        property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-G610F");
+        property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "on7xeltedd");
+
+        init_dsds();
+
+    } else if (bootloader.find("G610L") == 0) {
+    /* SM-G610L */
+        property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-G610L");
+        property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "on7xeltekl");
+
+        init_dsds();
+
+    } else if (bootloader.find("G610K") == 0) {
+    /* SM-G610K */
+        property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-G610K");
+        property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "on7xeltekk");
+
+        init_dsds();
+
+    } else if (bootloader.find("G610S") == 0) {
+    /* SM-G610S */
+        property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-G610S");
+        property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "on7xelteks");
+
+        init_dsds();
+
+    } else if (bootloader.find("G610M") == 0) {
+    /* SM-A320Y */
+        property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-G610M");
+        property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "on7xelteub");
+
+        init_dsds();
+
+    } else if (bootloader.find("G610Y") == 0) {
+    /* SM-G610Y */
+        property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-G610Y");
+        property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "on7xeltezt");
+
+        init_dsds();
+
+    }
+
+    /* Common properties*/
+    property_override_quad("ro.bootimage.build.fingerprint", "ro.build.fingerprint", "ro.odm.build.fingerprint", "ro.vendor.build.fingerprint", "samsung/x1sxxx/x1s:10/QP1A.190711.020/G981BXXU1ATCT:user/release-keys");
+    property_override("ro.system.build.fingerprint", "samsung/x1sxxx/x1s:10/QP1A.190711.020/G981BXXU1ATCT:user/release-keys");
+    property_override("ro.build.description", "x1sxxx-user 10 QP1A.190711.020 G981BXXU1ATCT release-keys");
+    property_override_quad("ro.product.device", "ro.product.odm.device", "ro.product.system.device", "ro.product.vendor.device", "on7xelte");
+
+    std::string device = GetProperty("ro.product.device", "");
+    LOG(ERROR) << "Found bootloader id %s setting build properties for %s device\n" << bootloader.c_str() << device.c_str();
 }
-
-
 
