@@ -30,4 +30,3 @@ PRODUCT_NAME := omni_on7xelte
 PRODUCT_MODEL := Samsung Galaxy J7 Prime
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
-

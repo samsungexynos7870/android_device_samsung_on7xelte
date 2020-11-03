@@ -16,11 +16,10 @@ $ git clone https://gitlab.com/OrangeFox/device/on7xelte.git -b fox_9.0 device/s
 $ repo sync --no-repo-verify -c --force-sync --no-clone-bundle --no-tags --optimized-fetch --prune -j`nproc`
 
 # Build
-$ mv device/samsung/on7xelte/build_ofox.sh .
-$ . build_ofox.sh on7xelte
+$ source build/envsetup.sh ; lunch omni_on7xelte-eng ; mka recoveryimage
 ```
 ## Credits
-2019 @Astrako
+2020 @Astrako
 
 ## Contact
 Telegram support group: https://t.me/joinchat/D1Jk_VbieGBXOWZt2y8O7A
