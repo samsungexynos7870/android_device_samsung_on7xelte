@@ -27,7 +27,7 @@ $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := on7xelte
-PRODUCT_NAME := lineage_on7xelte
+PRODUCT_NAME := aosp_on7xelte
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 
