@@ -110,4 +110,9 @@
     <!-- enable support for configure max aspect ratio per app -->
     <bool name="config_haveHigherAspectRatioScreen">false</bool>
 
+    <!-- Number of milliseconds to hold a wake lock to ensure that drawing is fully
+         flushed to the display while dozing.  This value needs to be large enough
+         to account for processing and rendering time plus a frame or two of latency
+         in the display pipeline plus some slack just to be sure. -->
+    <integer name="config_drawLockTimeoutMillis">115</integer>
 </resources>
