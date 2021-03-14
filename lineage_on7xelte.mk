@@ -29,6 +29,7 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 PRODUCT_DEVICE := on7xelte
 PRODUCT_NAME := lineage_on7xelte
 PRODUCT_BRAND := samsung
+PRODUCT_MODEL := Galaxy J7 Prime
 PRODUCT_MANUFACTURER := samsung
 
 TARGET_VENDOR := samsung
