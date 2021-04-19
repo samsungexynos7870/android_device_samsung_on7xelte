@@ -26,7 +26,7 @@ export TARGET_DEVICE_ALT="on7xelte, on7xeltedd, on7xeltekl, on7xeltekk, on7xelte
 # R11
 export FOX_R11="1"
 export FOX_BUILD_TYPE="Stable"
-export FOX_VERSION="R11.0_1"
+export FOX_VERSION="R11.1"
 export FOX_ADVANCED_SECURITY="1"
 export OF_USE_TWRP_SAR_DETECT="1"
 export OF_DISABLE_MIUI_OTA_BY_DEFAULT="1"
