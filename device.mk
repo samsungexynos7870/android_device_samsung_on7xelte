@@ -25,6 +25,9 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/mixer_gains.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_gains.xml \
     $(DEVICE_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
 
+# Launch Android API level
+PRODUCT_SHIPPING_API_LEVEL := 23
+
 # Bootanimation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
@@ -36,8 +39,10 @@ PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-impl \
-    android.hardware.bluetooth@1.0-service
+    android.hardware.bluetooth@1.0-service \
+    android.hardware.bluetooth.audio@2.0-impl \
+    audio.bluetooth.default \
+    libbt-vendor
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -51,6 +56,15 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_PACKAGES += \
     mobicore.rc \
     wifi_device.rc
+
+# ANT+
+PRODUCT_PACKAGES += \
+    AntHalService \
+    com.dsi.ant.antradio_library \
+    libantradio
+
+PRODUCT_COPY_FILES += \
+    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml
 
 # Shims
 PRODUCT_PACKAGES += \

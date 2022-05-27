@@ -18,12 +18,18 @@ DEVICE_PATH := device/samsung/on7xelte
 # Audio
 BOARD_USE_TFA_AMP := true
 
+# Display
+TARGET_SCREEN_DENSITY := 420
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := on7xelte,on7xeltedd,on7xeltekl,on7xeltekk,on7xelteks,on7xelteub,on7xeltezt
 
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+BOARD_CUSTOM_BT_CONFIG := $(DEVICE_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 
 # Kernel
 TARGET_KERNEL_CONFIG := exynos7870-on7xelte_defconfig
@@ -37,6 +43,9 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_on7xelte
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
+
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Shims
 TARGET_LD_SHIM_LIBS += \
